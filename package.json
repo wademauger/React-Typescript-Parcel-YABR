@@ -1,0 +1,19 @@
+{
+  "name": "sse-calendar",
+  "version": "1.0.0",
+  "description": "A react calendar component for the SSE website sse.rit.edu",
+  "main": "index.js",
+  "scripts": {
+    "dev": "parcel ./index.html -p 4000 --open",
+    "prod": "parcel build ./src/index.ts --out-dir ./build/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Wade Mauger",
+  "license": "MIT",
+  "dependencies": {
+    "parcel-bundler": "^1.7.1"
+  },
+  "devDependencies": {
+    "typescript": "^2.8.3"
+  }
+}
