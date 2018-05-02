@@ -1,6 +1,6 @@
 # SSE Calendar
 
-A calendar react component for the (SSE website)[sse.rit.edu] & a boilerplate for getting started making a distributable react component
+A calendar react component for the [SSE website](http://sse.rit.edu) & a boilerplate for getting started making a distributable react component
 
 ## Getting Started
 
