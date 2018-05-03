@@ -17,7 +17,6 @@ export const weekGen = (startDate: Date, rolloverLimit = -1) => {
       thisDate -= rolloverLimit; // Allow the date to roll over to the next month
       thisYear += 1; 
     }
-    console.log(`running: MDYtoDate(${thisMonth}, ${thisDate}, ${thisYear})`)
     week.push(MDYtoDate(thisMonth, thisDate, thisYear));
     thisDate += 1;
   }

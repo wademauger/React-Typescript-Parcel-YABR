@@ -18,7 +18,8 @@ const eventDisplayedFilter = (startDate: Date, endDate: Date, event: Event) => {
 
 const eventsTodayFilter = (today: Date, allEvents: Array<Event>) => {
   return allEvents.filter(thisEvent => {
-    if (thisEvent.startDateTime.getYear() !== today.getYear()) return false;
+    window.today = today;
+    if (thisEvent.startDateTime.getYear() !== today.getUTCFullYear()) return false;
     if (thisEvent.startDateTime.getMonth() !== today.getMonth()) return false;
     if (thisEvent.startDateTime.getDate() !== today.getDate()) return false;
     return true;
@@ -31,8 +32,8 @@ export const Week = ({weekStartDay, allEvents}) => {
   return weekDateObjects.map(thisDate => (
     <Day
       key={thisDate.getDate()}
-    date={thisDate.getDate()}
-    events={eventsTodayFilter(thisDate, allEvents)}
+      date={`${moment().month(thisDate.getMonth()).format('MMM')} ${thisDate.getDate()}`}
+      events={eventsTodayFilter(thisDate, allEvents)}
     />
   ));
 };
@@ -40,29 +41,29 @@ export const Week = ({weekStartDay, allEvents}) => {
 export const Calendar = props => (
 
   <div>
-    {[-14, -7, 0, 7, 14, 21].map( dateIndex => (
+    {[-7, 0, 7, 14, 21].map( dateIndex => (
     <div style={{display: 'inline-block'}}>
       <Week 
         allEvents={[
           {
             title: 'Bowling',
-            startDateTime: new Date(),
-            endDateTime: new Date(),
+            startDateTime: new Date('3/28/2018 14:00'),
+            endDateTime: new Date('3/28/2018 16:00'),
             description: 'We\'re going bowling, deal with it.'
           },
           {
             title: 'Karaoke',
-            startDateTime: new Date(),
-            endDateTime: new Date(),
+            startDateTime: new Date('4/10/2018 18:00'),
+            endDateTime: new Date('4/10/2018 20:00'),
           },
           {
             title: 'Docker Talk',
-            startDateTime: new Date(),
-            endDateTime: new Date(),
+            startDateTime: new Date('4/11/2018 10:00'),
+            endDateTime: new Date('4/11/2018 12:00'),
           },
           ]}
-          key={dateIndex}
-      weekStartDay={moment().day(dateIndex).toDate()}
+        key={dateIndex}
+        weekStartDay={moment().day(dateIndex).toDate()}
       />
     </div>
     ))}
